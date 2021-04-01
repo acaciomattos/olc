@@ -24,7 +24,7 @@ olc.eval <- function(YY,Levels,model,k.max){
   
   
   Data_aux <- data.frame(YY,Levels)
-  if(model=="nb"){modelo1 <- glm.nb(YY ~-1+Levels,data=Data_aux,control = list(maxit=50))}
+  if(model=="nb"){modelo1 <- glm.nb(YY ~-1+Levels,data=Data_aux,control = glm.control(maxit=50))}
   if(model=="poi_zero"){modelo1 <-  zeroinfl(YY~-1+Levels | 1, data=Data_aux, dist = "poisson")}
   if(model=="neg_zero"){modelo1 <-  zeroinfl(YY~-1+Levels | 1, data=Data_aux, dist = "negbin")}
   if(model=="geo_zero"){modelo1 <-  zeroinfl(YY~-1+Levels | 1, data=Data_aux, dist = "geometric")}
@@ -97,8 +97,8 @@ olc.eval <- function(YY,Levels,model,k.max){
     }
     #Fitting models
     if(model=="nb"){
-      modelo1.olc <- glm.nb(formula_aux1,data=Data_aux,control = list(maxit=50))
-      modelo2.olc <- glm.nb(formula_aux2,data=Data_aux,control = list(maxit=50))
+      modelo1.olc <- glm.nb(formula_aux1,data=Data_aux,control = glm.control(maxit=50))
+      modelo2.olc <- glm.nb(formula_aux2,data=Data_aux,control = glm.control(maxit=50))
     }
     if(model=="poi_zero"){
       modelo1.olc <- zeroinfl(formula_aux1,data=Data_aux,dist="poisson")
