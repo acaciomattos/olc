@@ -126,12 +126,12 @@ olc.eval <- function(YY,Levels,model,k.max){
     }
     if(model %in% c("binomial","gaussian","Gamma","inverse.gaussian",
                     "poisson","quasi","quasibinomial","quasipoisson","nb")){
-      aic_aux_met1 <- c(aic_aux_met1,modelo1$aic/modelo1.olc$aic)
-      aic_aux_met2 <- c(aic_aux_met2,modelo1$aic/modelo2.olc$aic)
+      aic_aux_met1 <- c(aic_aux_met1,modelo1.olc$aic/modelo1$aic)
+      aic_aux_met2 <- c(aic_aux_met2,modelo2.olc$aic/modelo1$aic)
     }
     if(model %in% c("poi_zero","neg_zero","geo_zero")){
-      aic_aux_met1 <- c(aic_aux_met1,AIC(modelo1)/AIC(modelo1.olc))
-      aic_aux_met2 <- c(aic_aux_met2,AIC(modelo1)/AIC(modelo2.olc))
+      aic_aux_met1 <- c(aic_aux_met1,AIC(modelo1.olc)/AIC(modelo1))
+      aic_aux_met2 <- c(aic_aux_met2,AIC(modelo2.olc)/AIC(modelo1))
     }
     lr_p_v_met1 <- c(lr_p_v_met1,lrtest(modelo1,modelo1.olc)[2,5])
     lr_p_v_met2 <- c(lr_p_v_met2,lrtest(modelo1,modelo2.olc)[2,5])
