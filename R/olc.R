@@ -21,7 +21,7 @@ olc <- function(YY,Levels,model,k){
   
   
   Data_aux <- data.frame(YY,Levels)
-  if(model=="nb"){modelo1 <- glm.nb(YY ~-1+Levels,data=Data_aux,control = list(maxit=50))}
+  if(model=="nb"){modelo1 <- glm.nb(YY ~-1+Levels,data=Data_aux,control = glm.control(maxit=50))}
   if(model=="poi_zero"){modelo1 <-  zeroinfl(YY~-1+Levels | 1, data=Data_aux, dist = "poisson")}
   if(model=="neg_zero"){modelo1 <-  zeroinfl(YY~-1+Levels | 1, data=Data_aux, dist = "negbin")}
   if(model=="geo_zero"){modelo1 <-  zeroinfl(YY~-1+Levels | 1, data=Data_aux, dist = "geometric")}
