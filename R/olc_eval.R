@@ -125,7 +125,7 @@ olc.eval <- function(YY,Levels,model,k.max){
       modelo2.olc <- glm(formula_aux2,data=Data_aux,family=model,control = list(maxit=50))
     }
     if(model %in% c("binomial","gaussian","Gamma","inverse.gaussian",
-                    "poisson","quasi","quasibinomial","quasipoisson")){
+                    "poisson","quasi","quasibinomial","quasipoisson", "nb")){
       aic_aux_met1 <- c(aic_aux_met1,modelo1.olc$aic/modelo1$aic)
       aic_aux_met2 <- c(aic_aux_met2,modelo2.olc$aic/modelo1$aic)
     }
